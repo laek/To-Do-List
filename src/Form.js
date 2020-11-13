@@ -10,6 +10,7 @@ class ToDoForm extends React.Component {
 
     addItem = () => {
         this.props.handleChange(this.state.toDoText);
+        this.setState({toDoText: ''});
     }
 
     render() {
@@ -21,5 +22,6 @@ class ToDoForm extends React.Component {
         )
     }
 }
+
 
 export default ToDoForm;

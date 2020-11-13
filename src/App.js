@@ -8,20 +8,21 @@ import ToDoForm from './Form';
 
 function App() {
   const [toDoItems, setToDoItems ] = useState([]);
-  let count = 1;
+  const [count, setCount] = useState(1);
 
   const updateToDoItems = (toDoText) => {
     setToDoItems(toDoItems.concat({id: count, text: toDoText}));
-    count++;
+    setCount(count+1);
   }
 
   const removeAllItems = () => {
     (setToDoItems([]));
   }
 
-  const removeToDoItem = () => {
-
+  const removeToDoItem = (id) => {
+    setToDoItems(toDoItems.filter((item) => (item.id !== id)));
   }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -30,7 +31,7 @@ function App() {
         </p>
       </header>
       <ToDoForm handleChange={updateToDoItems}/>
-      <ToDoItemList toDoItems={toDoItems}/>
+      <ToDoItemList removeToDoItem={removeToDoItem} toDoItems={toDoItems}/>
       <button onClick={removeAllItems}>Remove all</button>
     </div>
   );

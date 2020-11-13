@@ -12,7 +12,7 @@ class ToDoItemList extends React.Component {
   render() {
     return(
       <div>
-        {this.props.toDoItems.map(item => <ToDoItem toDoItem={item} />)}
+        {this.props.toDoItems.map(item => <ToDoItem deleteItem={this.deleteItem} toDoItem={item} />)}
       </div>
     );
   }
