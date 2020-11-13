@@ -16,7 +16,7 @@ class ToDoForm extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" onChange={this.updateText}/>
+                <input type="text" onChange={this.updateText} value={this.state.toDoText}/>
                 <button onClick={this.addItem}>Add item</button>
             </div>
         )
