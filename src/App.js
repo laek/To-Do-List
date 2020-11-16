@@ -4,23 +4,34 @@ import ToDoItem from './ToDoItem.js';
 import ToDoItemList from './ToDoItemList.js';
 import {useState} from 'react';
 import ToDoForm from './Form';
+import DoneList from './DoneList';
 
 
 function App() {
   const [toDoItems, setToDoItems ] = useState([]);
   const [count, setCount] = useState(1);
+  const [doneItems, setDoneItems] = useState([]);
 
   const updateToDoItems = (toDoText) => {
     setToDoItems(toDoItems.concat({id: count, text: toDoText}));
     setCount(count+1);
   }
 
-  const removeAllItems = () => {
+  const removeAllToDoItems = () => {
     (setToDoItems([]));
+  }
+
+  const removeAllDoneItems = () => {
+    setDoneItems([]);
   }
 
   const removeToDoItem = (id) => {
     setToDoItems(toDoItems.filter((item) => (item.id !== id)));
+  }
+
+  const moveItemToDone = (id) => {
+    setDoneItems(doneItems.concat(toDoItems.filter((item) => (item.id === id))));
+    removeToDoItem(id);
   }
 
   return (
@@ -31,8 +42,9 @@ function App() {
         </p>
       </header>
       <ToDoForm handleChange={updateToDoItems}/>
-      <ToDoItemList removeToDoItem={removeToDoItem} toDoItems={toDoItems}/>
-      <button onClick={removeAllItems}>Remove all</button>
+      <ToDoItemList removeToDoItem={removeToDoItem} toDoItems={toDoItems} moveItemToDone={moveItemToDone}/>
+      <button onClick={removeAllToDoItems}>Remove all</button>
+      <DoneList doneItems={doneItems} removeAllDoneItems={removeAllDoneItems}/>
     </div>
   );
 }

@@ -9,10 +9,15 @@ class ToDoItemList extends React.Component {
     this.props.removeToDoItem(id);
   }
 
+  moveItemToDone = (id) => {
+    this.props.moveItemToDone(id);
+  }
+
   render() {
     return(
       <div>
-        {this.props.toDoItems.map(item => <ToDoItem deleteItem={this.deleteItem} toDoItem={item} />)}
+        <h1>To Do List</h1>
+        {this.props.toDoItems.map(item => <ToDoItem deleteItem={this.deleteItem} moveItemToDone={this.moveItemToDone} toDoItem={item} />)}
       </div>
     );
   }
