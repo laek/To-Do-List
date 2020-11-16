@@ -16,7 +16,6 @@ class ToDoItemList extends React.Component {
   render() {
     return(
       <div>
-        <h1>To Do List</h1>
         {this.props.toDoItems.map(item => <ToDoItem deleteItem={this.deleteItem} moveItemToDone={this.moveItemToDone} toDoItem={item} />)}
       </div>
     );

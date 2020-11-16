@@ -11,7 +11,6 @@ class DoneList extends React.Component {
   render() {
     return(
       <div>
-        <h1>Done List</h1>
         {this.props.doneItems.map(item => <DoneItem doneItem={item} />)}
         <button onClick={this.removeAllDoneItems}>Remove all</button>
       </div>

@@ -41,10 +41,18 @@ function App() {
           To Do List
         </p>
       </header>
-      <ToDoForm handleChange={updateToDoItems}/>
-      <ToDoItemList removeToDoItem={removeToDoItem} toDoItems={toDoItems} moveItemToDone={moveItemToDone}/>
-      <button onClick={removeAllToDoItems}>Remove all</button>
-      <DoneList doneItems={doneItems} removeAllDoneItems={removeAllDoneItems}/>
+      <div className="main-body">
+        <div className="todo-list">
+          <h1>To Do List</h1>
+          <ToDoForm handleChange={updateToDoItems}/>
+          <ToDoItemList removeToDoItem={removeToDoItem} toDoItems={toDoItems} moveItemToDone={moveItemToDone}/>
+          <button onClick={removeAllToDoItems}>Remove all</button>
+        </div>
+        <div className="done-list">
+          <h1>Done List</h1>
+          <DoneList doneItems={doneItems} removeAllDoneItems={removeAllDoneItems}/>
+        </div>
+      </div>
     </div>
   );
 }
